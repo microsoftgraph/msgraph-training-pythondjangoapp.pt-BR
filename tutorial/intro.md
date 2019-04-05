@@ -13,7 +13,7 @@ Este tutorial ensina como criar um aplicativo da Web do python django que usa a 
 Antes de iniciar este tutorial, você deve ter o [Python](https://www.python.org/) (com [Pip](https://pypi.org/project/pip/)) instalado em sua máquina de desenvolvimento. Se você não tiver Python, visite o link anterior para opções de download.
 
 > [!NOTE]
-> Este tutorial foi escrito com o Python versão 3.7.0 e a versão 2,1 do Django. As etapas deste guia podem funcionar com outras versões, mas que não foram testadas.
+> Este tutorial foi escrito com o Python versão 3.7.0 e a versão 2,2 do Django. As etapas deste guia podem funcionar com outras versões, mas que não foram testadas.
 
 ## <a name="feedback"></a>Comentários
 
