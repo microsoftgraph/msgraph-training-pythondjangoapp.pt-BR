@@ -29,7 +29,7 @@ Considere o que esse código está fazendo.
 - O `$select` parâmetro limita os campos retornados para cada evento para apenas aqueles que o modo de exibição realmente usará.
 - O `$orderby` parâmetro classifica os resultados pela data e hora em que foram criados, com o item mais recente em primeiro lugar.
 
-Agora, crie um modo de exibição de calendário. Primeiro, altere `from tutorial.graph_helper import get_user` a linha para o seguinte.
+Agora, crie um modo de exibição de calendário. No `./tutorial/views.py`, primeiro altere a `from tutorial.graph_helper import get_user` linha para o seguinte.
 
 ```python
 from tutorial.graph_helper import get_user, get_calendar_events
