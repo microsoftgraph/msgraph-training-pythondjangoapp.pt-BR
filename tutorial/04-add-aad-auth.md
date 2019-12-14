@@ -5,13 +5,13 @@ Neste exercício, você estenderá o aplicativo do exercício anterior para ofer
 Crie um novo arquivo na raiz do projeto chamado `oauth_settings.yml`e adicione o seguinte conteúdo.
 
 ```text
-app_id: YOUR_APP_ID_HERE
-app_secret: YOUR_APP_PASSWORD_HERE
-redirect: http://localhost:8000/tutorial/callback
-scopes: openid profile offline_access user.read calendars.read
-authority: https://login.microsoftonline.com/common
-authorize_endpoint: /oauth2/v2.0/authorize
-token_endpoint: /oauth2/v2.0/token
+app_id: "YOUR_APP_ID_HERE"
+app_secret: "YOUR_APP_PASSWORD_HERE"
+redirect: "http://localhost:8000/tutorial/callback"
+scopes: "openid profile offline_access user.read calendars.read"
+authority: "https://login.microsoftonline.com/common"
+authorize_endpoint: "/oauth2/v2.0/authorize"
+token_endpoint: "/oauth2/v2.0/token"
 ```
 
 Substitua `YOUR_APP_ID_HERE` pela ID do aplicativo do portal de registro do aplicativo e substitua `YOUR_APP_SECRET_HERE` pela senha gerada.
@@ -253,7 +253,7 @@ Reinicie o servidor e vá pelo processo de entrada. Você deve terminar de volta
 
 ![Uma captura de tela da Home Page após entrar](./images/add-aad-auth-01.png)
 
-Clique no avatar do usuário no canto superior direito para acessar o **** link sair. Clicar **** em sair redefine a sessão e retorna à Home Page.
+Clique no avatar do usuário no canto superior direito para **acessar o link sair.** Clicar **em sair** redefine a sessão e retorna à Home Page.
 
 ![Uma captura de tela do menu suspenso com o link sair](./images/add-aad-auth-02.png)
 

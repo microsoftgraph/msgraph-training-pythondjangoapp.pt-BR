@@ -3,7 +3,7 @@
 Neste exercício, você usará o [Django](https://www.djangoproject.com/) para criar um aplicativo Web. Se você ainda não tiver o Django instalado, você pode instalá-lo a partir da sua CLI (interface de linha de comando) com o seguinte comando.
 
 ```Shell
-pip install Django=2.2.5
+pip install Django==3.0
 ```
 
 Abra sua CLI, navegue até um diretório onde você tem direitos para criar arquivos e execute o seguinte comando para criar um novo aplicativo do Django.
@@ -75,6 +75,7 @@ urlpatterns = [
 Por fim, adicione um modo de `tutorials` exibição temporário ao aplicativo para verificar se o roteamento de URL está funcionando. Abra o arquivo `./tutorial/views.py` e adicione o seguinte código.
 
 ```python
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 
 def home(request):
@@ -93,9 +94,9 @@ Antes de prosseguir, instale algumas bibliotecas adicionais que serão usadas po
 Execute o seguinte comando em sua CLI.
 
 ```Shell
-pip install requests_oauthlib==1.2.0
-pip install pyyaml==5.1
-pip install python-dateutil==2.8.0
+pip install requests_oauthlib==1.3.0
+pip install pyyaml==5.2
+pip install python-dateutil==2.8.1
 ```
 
 ## <a name="design-the-app"></a>Projetar o aplicativo
