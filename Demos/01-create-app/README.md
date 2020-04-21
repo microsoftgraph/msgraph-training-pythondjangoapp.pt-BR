@@ -1,3 +1,0 @@
-# <a name="completed-module-create-a-python-django-web-app"></a>Módulo concluído: criar um aplicativo Web do python django
-
-A versão do projeto nesse diretório reflete a conclusão do tutorial para cima, [criar um python django Web App](https://docs.microsoft.com/graph/training/python-tutorial?tutorial-step=1). Se você usar esta versão do projeto, precisará concluir o restante do tutorial começando em [registrar o aplicativo no portal](https://docs.microsoft.com/graph/training/python-tutorial?tutorial-step=2).
