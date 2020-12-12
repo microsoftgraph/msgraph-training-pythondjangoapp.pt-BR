@@ -5,7 +5,7 @@ Neste exercício, você usará o [Django](https://www.djangoproject.com/) para c
 1. Se você ainda não tiver o Django instalado, você pode instalá-lo a partir da sua CLI (interface de linha de comando) com o seguinte comando.
 
     ```Shell
-    pip install Django==3.0.4
+    pip install --user Django==3.1.4
     ```
 
 1. Abra sua CLI, navegue até um diretório onde você tem direitos para criar arquivos e execute o seguinte comando para criar um novo aplicativo do Django.
@@ -59,52 +59,57 @@ Neste exercício, você usará o [Django](https://www.djangoproject.com/) para c
 
     :::code language="python" source="../demo/graph_tutorial/graph_tutorial/urls.py" id="UrlConfSnippet":::
 
-1. Adicione um modo de exibição temporário `tutorials` ao aplicativo para verificar se o roteamento de URL está funcionando. Abra **./tutorial/views.py** e adicione o código a seguir.
+1. Adicione um modo de exibição temporário ao `tutorials` aplicativo para verificar se o roteamento de URL está funcionando. Abra **./tutorial/views.py** e substitua todo o conteúdo pelo código a seguir.
 
     ```python
     from django.shortcuts import render
     from django.http import HttpResponse, HttpResponseRedirect
+    from django.urls import reverse
+    from datetime import datetime, timedelta
+    from dateutil import tz, parser
 
     def home(request):
       # Temporary!
       return HttpResponse("Welcome to the tutorial.")
     ```
 
-1. Salve todas as suas alterações e reinicie o servidor. Navegue até `http://localhost:8000`. Você deve ver`Welcome to the tutorial.`
+1. Salve todas as suas alterações e reinicie o servidor. Navegue até `http://localhost:8000` . Você deve ver `Welcome to the tutorial.`
 
 ## <a name="install-libraries"></a>Instale bibliotecas
 
 Antes de prosseguir, instale algumas bibliotecas adicionais que serão usadas posteriormente:
 
-- [Solicitações-OAuthlib: OAuth para seres humanos](https://requests-oauthlib.readthedocs.io/en/latest/) para lidar com fluxos de entrada e tokens OAuth e para fazer chamadas para o Microsoft Graph.
+- [Biblioteca de autenticação da Microsoft (MSAL) para Python](https://github.com/AzureAD/microsoft-authentication-library-for-python) para manipulação de entrada e fluxos de token OAuth.
+- [Solicitações: http para seres humanos](https://requests.readthedocs.io/en/master/) para fazer chamadas para o Microsoft Graph.
 - [PyYAML](https://pyyaml.org/wiki/PyYAMLDocumentation) para carregar a configuração de um arquivo do YAML.
 - [Python-DateUtil](https://pypi.org/project/python-dateutil/) para analisar cadeias de caracteres de data ISO 8601 retornadas do Microsoft Graph.
 
 1. Execute o seguinte comando em sua CLI.
 
     ```Shell
-    pip install requests_oauthlib==1.3.0
+    pip install msal==1.7.0
+    pip install requests==2.25.0
     pip install pyyaml==5.3.1
     pip install python-dateutil==2.8.1
     ```
 
 ## <a name="design-the-app"></a>Projetar o aplicativo
 
-1. Crie um novo diretório no diretório **./tutorial** chamado `templates`.
+1. Crie um novo diretório no diretório **./tutorial** chamado `templates` .
 
-1. No diretório **./tutorial/templates** , crie um novo diretório chamado `tutorial`.
+1. No diretório **./tutorial/templates** , crie um novo diretório chamado `tutorial` .
 
-1. No diretório **./tutorial/templates/tutorial** , crie um novo arquivo chamado `layout.html`. Adicione o código a seguir ao arquivo.
+1. No diretório **./tutorial/templates/tutorial** , crie um novo arquivo chamado `layout.html` . Adicione o código a seguir ao arquivo.
 
     :::code language="html" source="../demo/graph_tutorial/tutorial/templates/tutorial/layout.html" id="LayoutSnippet":::
 
-    Este código adiciona a [inicialização](http://getbootstrap.com/) para estilos simples e a [fonte incrível](https://fontawesome.com/) para alguns ícones simples. Também define um layout global com uma barra de navegação.
+    Este código adiciona [Bootstrap](http://getbootstrap.com/) para estilo simples e [Fabric Core](https://developer.microsoft.com/fluentui#/get-started#fabric-core) para alguns ícones simples. Também define um layout global com uma barra de navegação.
 
-1. Crie um novo diretório no diretório **./tutorial** chamado `static`.
+1. Crie um novo diretório no diretório **./tutorial** chamado `static` .
 
-1. No diretório **./tutorial/static** , crie um novo diretório chamado `tutorial`.
+1. No diretório **./tutorial/static** , crie um novo diretório chamado `tutorial` .
 
-1. No diretório **./tutorial/static/tutorial** , crie um novo arquivo chamado `app.css`. Adicione o código a seguir ao arquivo.
+1. No diretório **./tutorial/static/tutorial** , crie um novo arquivo chamado `app.css` . Adicione o código a seguir ao arquivo.
 
     :::code language="css" source="../demo/graph_tutorial/tutorial/static/tutorial/app.css":::
 
@@ -116,9 +121,11 @@ Antes de prosseguir, instale algumas bibliotecas adicionais que serão usadas po
 
     :::code language="python" source="../demo/graph_tutorial/tutorial/views.py" id="InitializeContextSnippet":::
 
-1. Substitua o modo `home` de exibição existente pelo seguinte.
+1. Substitua o `home` modo de exibição existente pelo seguinte.
 
     :::code language="python" source="../demo/graph_tutorial/tutorial/views.py" id="HomeViewSnippet":::
+
+1. Adicione um arquivo PNG chamado **no-profile-photo.png** no diretório **./tutorial/static/tutorial** .
 
 1. Salve todas as suas alterações e reinicie o servidor. Agora, o aplicativo deve ser muito diferente.
 
